@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Ventas</h1>
+
+<table class="table table-stiped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Fecha de Venta</th>
+            <th>CLiente</th>
+            <th>Vehiculo</th>
+            <th>Acciones</th>
+        </tr>
+
+    </thead>
+    <tbody>
+
+        {% for venta in ventas  %}
+        <tr>
+            <td>{{ venta.venta_id }}</td>
+            <td>{{ venta.fecha_venta }}</td>
+            <td>{{ venta.cliente }}</td>
+            <td>{{ venta.vehiculo }}</td>
+            <td>{{ venta.ci }}</td>
+            <td></td>
+        </tr>
+        {% endfor  %}
+    </tbody>
+</table>
+{% endblock %} 

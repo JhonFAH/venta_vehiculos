@@ -13,7 +13,7 @@ def get_db_connection():
 
 @app.route("/")
 def index():
-    return "Venta de Vehiculos"
+    return redirect(url_for('clientes'))
 
 # =================================================
 #  funcion INDEX, mostramos la lista completa de registros.
@@ -31,7 +31,7 @@ def vehiculos():
     conn = get_db_connection()
     vehiculos = conn.execute('select * from vehiculos').fetchall()
     conn.close()
-    return render_template('clientes.html', vehiculos= vehiculos)
+    return render_template('vehiculos.html', vehiculos= vehiculos)
 
 @app.route("/ventas")
 def ventas():

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Vehiculos</h1>
+<table class="table table-stiped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Modelo</th>
+            <th>Placa</th>
+            <th>Color</th>
+            <th>Acciones</th>
+        </tr>
+
+    </thead>
+    <tbody>
+
+        {% for vehiculo in vehiculos  %}
+        <tr>
+            <td>{{ vehiculo.vehiculo_id }}</td>
+            <td>{{ vehiculo.modelo }}</td>
+            <td>{{ vehiculo.placa }}</td>
+            <td>{{ vehiculo.color }}</td>
+            <td></td>
+        </tr>
+        {% endfor  %}
+    </tbody>
+</table>
+{% endblock %} 
