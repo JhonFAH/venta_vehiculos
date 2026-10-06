@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card">
+    <div class="card-header">
+        <h2>
+            {% if venta %}
+                Editar
+            {% else %}
+                Nueva
+            {% endif %}    
+            Venta
+        </h2>
+    </div>
+    <div class="card-body">
+        <form action="" method="POST">
+
+            <div class="mb-3">
+                <label for="fecha_venta" class="form-label">Fecha</label>
+                <input type="date" 
+                    class="form-control" 
+                    id="fecha_venta" 
+                    name="fecha_venta" 
+                    value="{{ venta['fecha_venta'] if venta else '' }}" 
+                    required>
+            </div>
+
+            <div class="mb-3">
+                <label for="cliente_id" class="form-label">Cliente</label>
+                <select name="cliente_id" id="cliente_id" class="form-select" required>
+                    <option value="">-- Seleccione un cliente --</option>
+                    {% for item in clientes %}
+                    <option value="{{ item.cliente_id }}" 
+                            {% if venta and venta.cliente_id == item.cliente_id %}selected{% endif %}>
+                        {{ item.nombre }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="vehiculo_id" class="form-label">Vehículo</label>
+                <select name="vehiculo_id" id="vehiculo_id" class="form-select" required>
+                    <option value="">-- Seleccione un vehículo --</option>
+                    {% for item in vehiculos %}
+                    <option value="{{ item.vehiculo_id }}" 
+                            {% if venta and venta.vehiculo_id == item.vehiculo_id %}selected{% endif %}>
+                        {{ item.descripcion }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Guardar</button>
+            <a href="{{ url_for('ventas') }}" class="btn btn-secondary">Cancelar</a>
+
+        </form>
+    </div>
+</div>
+{% endblock %}

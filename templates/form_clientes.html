@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card">
+    <div class="card-header">
+        <h2>
+            {% if cliente %}
+                Editar
+            {% else %}
+                Nuevo
+            {% endif %}    
+            Cliente
+        </h2>
+    </div>
+    <div class="card-body">
+        <form action="" method="POST">
+            <!-- cuando dejas el atributo action="" vacío en HTML, 
+            el navegador por defecto envía el formulario a la misma 
+            URL actual en la que estás parado -->
+
+            <div class="mb-3">
+                <label for="" class="form-label">Nombres</label>
+                <input type="text" class="form-control" name="nombres" value="{{cliente.nombres if cliente else ''}}">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Apellidos</label>
+                <input type="text" class="form-control" name="apellidos" value="{{cliente.apellidos if cliente else ''}}">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">CI</label>
+                <input type="text" class="form-control" name="ci" value="{{cliente.ci if cliente else ''}}">
+            </div>
+
+            <button class="btn btn-primary" type="submit">Enviar</button>
+            <a href="{{ url_for('ventas') }}" class="btn btn-secondary">Cancelar</a>
+
+        </form>
+    </div>
+</div>
+{% endblock %}

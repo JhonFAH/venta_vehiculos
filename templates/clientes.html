@@ -2,6 +2,8 @@
 {% block content %}
 
 <h1>Clientes</h1>
+<a href="{{url_for('nuevo_cliente')}}" class="btn btn-success mb-2">Nuevo</a>
+
 <table class="table table-stiped table-hover">
     <thead class="table-dark">
         <tr>
@@ -15,13 +17,16 @@
     </thead>
     <tbody>
 
-        {% for cliente in clientes  %}
+        {% for item in clientes  %}
         <tr>
-            <td>{{ cliente.cliente_id }}</td>
-            <td>{{ cliente.nombres }}</td>
-            <td>{{ cliente.apellidos }}</td>
-            <td>{{ cliente.ci }}</td>
-            <td></td>
+            <td>{{ item.cliente_id }}</td>
+            <td>{{ item.nombres }}</td>
+            <td>{{ item.apellidos }}</td>
+            <td>{{ item.ci }}</td>
+            <td>
+                <a href="{{url_for('editar_cliente', id=item.cliente_id)}}" class="btn btn-warning">Editar</a>
+                <a href="{{url_for('eliminar_cliente', id=item.cliente_id)}}" class="btn btn-danger" onclick="return(confirm('Esta seguro eliminar ??'))">Eliminar</a>
+            </td>
         </tr>
         {% endfor  %}
     </tbody>

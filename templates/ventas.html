@@ -2,6 +2,8 @@
 {% block content %}
 <h1>Ventas</h1>
 
+<a href="{{url_for('nueva_venta')}}" class="btn btn-success mb-2">Nuevo</a>
+
 <table class="table table-stiped table-hover">
     <thead class="table-dark">
         <tr>
@@ -15,14 +17,16 @@
     </thead>
     <tbody>
 
-        {% for venta in ventas  %}
+        {% for item in ventas  %}
         <tr>
-            <td>{{ venta.venta_id }}</td>
-            <td>{{ venta.fecha_venta }}</td>
-            <td>{{ venta.cliente }}</td>
-            <td>{{ venta.vehiculo }}</td>
-            <td>{{ venta.ci }}</td>
-            <td></td>
+            <td>{{ item.venta_id }}</td>
+            <td>{{ item.fecha_venta }}</td>
+            <td>{{ item.cliente }}</td>
+            <td>{{ item.vehiculo }}</td>
+            <td>
+                <a href="{{url_for('editar_venta',id=item.venta_id)}}" class="btn btn-warning">Editar</a>
+                <a href="{{url_for('eliminar_venta', id=item.venta_id)}}" class="btn btn-danger" onclick="return(confirm('Esta seguro eliminar ??'))">Eliminar</a>
+            </td>
         </tr>
         {% endfor  %}
     </tbody>

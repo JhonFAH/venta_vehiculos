@@ -124,3 +124,4 @@ print("\n VENTAS")
 cursor = conn.execute("SELECT * FROM ventas")
 for row in cursor:
     print (row)
+
